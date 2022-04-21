@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContact;
 use App\Models\Contact;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -28,15 +30,13 @@ class ContactController extends Controller
         return view('contacts.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(StoreContact $request): RedirectResponse
     {
-        //
+        $data = $request->validated();
+
+        $contact = Contact::query()->create($data);
+
+        return redirect()->route('index');
     }
 
     /**
