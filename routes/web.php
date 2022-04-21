@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ContactController::class, 'index']);
+Route::resource('contact', ContactController::class)
+    ->except('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
