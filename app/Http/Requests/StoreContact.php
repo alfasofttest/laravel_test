@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqueEmailContact;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreContact extends FormRequest
@@ -25,7 +26,7 @@ class StoreContact extends FormRequest
     {
         return [
             'name' => ['bail', 'required', 'string', 'min:5', 'max:255'],
-            'email' => ['bail', 'required', 'email'],
+            'email' => ['bail', 'required', 'email', new UniqueEmailContact(['contact', '=', $this->contact])],
             'contact' => ['bail', 'digits:9']
         ];
     }
