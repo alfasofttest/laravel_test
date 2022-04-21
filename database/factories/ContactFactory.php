@@ -11,10 +11,21 @@ class ContactFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'contact' => $this->faker->numerify('#########'),
+            'email' => $this->faker->unique()->email(),
         ];
+    }
+
+    public function deleted(): ContactFactory
+    {
+        return $this->state(function () {
+            return [
+                'deleted_at' => now()
+            ];
+        });
     }
 }
