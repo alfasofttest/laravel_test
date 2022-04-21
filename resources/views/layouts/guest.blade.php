@@ -15,10 +15,15 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        @toastr_css
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
+
+        @jquery
+        @toastr_js
+        @toastr_render
     </body>
 </html>

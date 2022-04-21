@@ -15,6 +15,8 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        @toastr_css
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -32,5 +34,9 @@
                 {{ $slot }}
             </main>
         </div>
+
+        @jquery
+        @toastr_js
+        @toastr_render
     </body>
 </html>

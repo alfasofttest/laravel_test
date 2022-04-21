@@ -70,9 +70,9 @@ class ContactController extends Controller
         $data = $request->validated();
 
         if ($contact->update($data)) {
-            // notify updated
+            toastSuccess('Contact updated successfully.');
         } else {
-            // notify error updating
+            toastError('Error updating Contact.');
         }
 
         return redirect()->route('index');
