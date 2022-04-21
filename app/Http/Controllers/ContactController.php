@@ -40,15 +40,11 @@ class ContactController extends Controller
         return redirect()->route('index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
     public function show(Contact $contact)
     {
-        //
+        return view('contacts.show', [
+            'contact' => $contact
+        ]);
     }
 
     public function edit(Contact $contact)
