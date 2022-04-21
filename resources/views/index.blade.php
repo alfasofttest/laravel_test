@@ -58,7 +58,12 @@
                                             @auth()
                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                     <a href="{{ route('contact.show', $contact) }}" class="text-indigo-600 hover:text-indigo-900">Show<span class="sr-only">, {{ $contact->name }}</span></a> |
-                                                    <a href="{{ route('contact.edit', $contact) }}" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $contact->name }}</span></a>
+                                                    <a href="{{ route('contact.edit', $contact) }}" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $contact->name }}</span></a> |
+                                                    <form action="{{ route('contact.destroy', $contact) }}" method="post" class="inline-block" onsubmit="confirm('Are you sure you want delete this Contact?')">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button type="submit" class="text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, {{ $contact->name }}</span></button>
+                                                    </form>
                                                 </td>
                                             @endauth
                                         </tr>

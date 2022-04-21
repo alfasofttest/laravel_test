@@ -35,7 +35,11 @@ class ContactController extends Controller
     {
         $data = $request->validated();
 
-        $contact = Contact::query()->create($data);
+        if (Contact::query()->create($data)) {
+            toastSuccess('Contact created successfully.');
+        } else {
+            toastError('Error creating contact.');
+        }
 
         return redirect()->route('index');
     }
@@ -54,14 +58,7 @@ class ContactController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateContact $request, Contact $contact)
+    public function update(UpdateContact $request, Contact $contact): RedirectResponse
     {
         $data = $request->validated();
 
@@ -74,14 +71,14 @@ class ContactController extends Controller
         return redirect()->route('index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Contact $contact)
+    public function destroy(Contact $contact): RedirectResponse
     {
-        //
+        if ($contact->delete()) {
+            toastSuccess('Contact deleted successfully.');
+        } else {
+            toastError('Error deleting contact');
+        }
+
+        return redirect()->route('index');
     }
 }
