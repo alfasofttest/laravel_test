@@ -17,5 +17,10 @@ class ContactSeeder extends Seeder
         Contact::factory()
             ->count(10)
             ->create();
+
+        Contact::factory()
+            ->deleted()
+            ->count(10)
+            ->create();
     }
 }
