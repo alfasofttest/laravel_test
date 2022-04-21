@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContact;
+use App\Http\Requests\UpdateContact;
 use App\Models\Contact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -50,15 +51,11 @@ class ContactController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Contact $contact)
     {
-        //
+        return view('contacts.edit', [
+            'contact' => $contact
+        ]);
     }
 
     /**
@@ -68,9 +65,17 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(UpdateContact $request, Contact $contact)
     {
-        //
+        $data = $request->validated();
+
+        if ($contact->update($data)) {
+            // notify updated
+        } else {
+            // notify error updating
+        }
+
+        return redirect()->route('index');
     }
 
     /**
