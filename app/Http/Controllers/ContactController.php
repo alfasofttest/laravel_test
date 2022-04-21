@@ -10,9 +10,17 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'index']);
+    }
+
     public function index()
     {
         $contacts = Contact::query()
+            ->when(request()->query('trashed') === 'true' && auth()->user(), function ($query) {
+                $query->onlyTrashed();
+            })
             ->select([
                 'id',
                 'name',
