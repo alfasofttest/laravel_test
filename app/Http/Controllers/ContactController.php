@@ -26,7 +26,8 @@ class ContactController extends Controller
                 'name',
                 'contact',
                 'email',
-                'created_at'
+                'created_at',
+                'deleted_at'
             ])->get();
 
         return view('index', [

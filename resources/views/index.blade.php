@@ -49,11 +49,11 @@
                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Contact</th>
                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created At</th>
-                                        @auth()
+                                        @if(auth()->user() && request()->query('trashed') !== 'true')
                                             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                                 <span class="sr-only">Edit</span>
                                             </th>
-                                        @endauth
+                                        @endif
                                     </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 bg-white">
@@ -64,7 +64,7 @@
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $contact->contact }}</td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $contact->email }}</td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $contact->created_at->format('d/m/Y') }}</td>
-                                            @auth()
+                                            @if(auth()->user() && !$contact->trashed())
                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                     <a href="{{ route('contact.show', $contact) }}" class="text-indigo-600 hover:text-indigo-900">Show<span class="sr-only">, {{ $contact->name }}</span></a> |
                                                     <a href="{{ route('contact.edit', $contact) }}" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $contact->name }}</span></a> |
@@ -74,7 +74,7 @@
                                                         <button type="submit" class="text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, {{ $contact->name }}</span></button>
                                                     </form>
                                                 </td>
-                                            @endauth
+                                            @endif
                                         </tr>
                                     @endforeach
 
