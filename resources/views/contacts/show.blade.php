@@ -30,7 +30,11 @@
                                 </div>
                                 <div class="p-5">
                                     <div class="flex justify-end">
-                                        <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Delete</button>
+                                        <form action="{{ route('contact.destroy', $contact) }}" method="post" class="inline-block" onsubmit="confirm('Are you sure you want delete this Contact?')">
+                                            @method('delete')
+                                            @csrf
+                                            <button  type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Delete</button>
+                                        </form>
                                         <a href="{{ route('contact.edit', $contact) }}">
                                             <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Edit</button>
                                         </a>
