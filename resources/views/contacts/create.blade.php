@@ -20,7 +20,7 @@
                                     <div class="sm:col-span-4">
                                         <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                                         <div class="mt-1">
-                                            <input type="text" name="name" id="name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error('name') border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 @enderror">
+                                            <input type="text" name="name" id="name" value="{{ old('name') }}" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error('name') border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 @enderror">
                                             @error('name')
                                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                                     <!-- Heroicon name: solid/exclamation-circle -->
@@ -36,7 +36,7 @@
                                     <div class="sm:col-span-4">
                                         <label for="email" class="block text-sm font-medium text-gray-700"> Email address </label>
                                         <div class="mt-1">
-                                            <input id="email" name="email" type="email" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error('email') border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 @enderror">
+                                            <input id="email" name="email" type="email" value="{{ old('email') }}" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error('email') border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 @enderror">
                                             @error('email')
                                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                                     <!-- Heroicon name: solid/exclamation-circle -->
@@ -52,7 +52,7 @@
                                     <div class="sm:col-span-4">
                                         <label for="contact" class="block text-sm font-medium text-gray-700"> Contact number </label>
                                         <div class="mt-1">
-                                            <input type="text" name="contact" id="contact" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error('contact') border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 @enderror">
+                                            <input type="text" name="contact" id="contact" value="{{ old('contact') }}" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error('contact') border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 @enderror">
                                             @error('contact')
                                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                                     <!-- Heroicon name: solid/exclamation-circle -->
