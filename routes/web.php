@@ -20,8 +20,4 @@ Route::get('/', [ContactController::class, 'index'])
 Route::resource('contact', ContactController::class)
     ->except('index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';

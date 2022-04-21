@@ -3,7 +3,6 @@
         @if (Route::has('login'))
             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
@@ -58,6 +57,7 @@
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $contact->created_at->format('d/m/Y') }}</td>
                                             @auth()
                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                                    <a href="{{ route('contact.show', $contact) }}" class="text-indigo-600 hover:text-indigo-900">Show<span class="sr-only">, {{ $contact->name }}</span></a> |
                                                     <a href="{{ route('contact.edit', $contact) }}" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $contact->name }}</span></a>
                                                 </td>
                                             @endauth
